@@ -19,14 +19,14 @@ class GuGuDan extends React.Component{
         e.preventDefault();
         if(parseInt(this.state.value) === (this.state.first * this.state.second)){
             this.setState({
-                result: '정답',
+                result: '정답 : ' + this.state.value,
                 first: Math.ceil(Math.random() * 9),
                 second: Math.ceil(Math.random() * 9),
                 value: ''
             });
         }else{
             this.setState({
-                result: '오답',
+                result: '오답: ' + this.state.value,
                 value: ''
             });
         }
@@ -34,14 +34,14 @@ class GuGuDan extends React.Component{
 
     render() {
         return (
-            <div>
+            <>
                 <div>{this.state.first} X {this.state.second} = ?</div>
                 <form onSubmit={this.onSubmit}>
                     <input type="number" value={this.state.value} onChange={this.onChange}/>
                     <button>입력</button>
                     <div>{this.state.result}</div>
                 </form>
-            </div>
+            </>
         );
     }
 }
