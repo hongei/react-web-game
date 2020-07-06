@@ -47,7 +47,6 @@ class GuGuDan extends React.Component{
             <>
                 <div>{this.state.first} X {this.state.second} = ?</div>
                 <form onSubmit={this.onSubmit}>
-                    {/* <input ref={(c) => {this.input = c;}} type="number" value={this.state.value} onChange={this.onChange}/> */}
                     <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
                     <button>입력</button>
                     <div>{this.state.result}</div>
