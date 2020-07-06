@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GuGuDan from './webGame/GuGuDan';
+import GuGuDan from './webGame/GuGuDan-class';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

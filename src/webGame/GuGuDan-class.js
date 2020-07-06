@@ -18,26 +18,37 @@ class GuGuDan extends React.Component{
     onSubmit = (e) => {
         e.preventDefault();
         if(parseInt(this.state.value) === (this.state.first * this.state.second)){
-            this.setState({
-                result: '정답 : ' + this.state.value,
-                first: Math.ceil(Math.random() * 9),
-                second: Math.ceil(Math.random() * 9),
-                value: ''
+            this.setState((prevState) => {
+                return {
+                    result: '정답 : ' + prevState.value,
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: ''
+                };
             });
+            this.input.focus();
         }else{
-            this.setState({
-                result: '오답: ' + this.state.value,
-                value: ''
+            this.setState((prevState) => {
+                return {
+                    result: '오답: ' + prevState.value,
+                    value: ''
+                }
             });
+            this.input.focus();
         }
     };
+
+    onRefInput = (c) => {
+        this.input = c;
+    }
 
     render() {
         return (
             <>
                 <div>{this.state.first} X {this.state.second} = ?</div>
                 <form onSubmit={this.onSubmit}>
-                    <input type="number" value={this.state.value} onChange={this.onChange}/>
+                    {/* <input ref={(c) => {this.input = c;}} type="number" value={this.state.value} onChange={this.onChange}/> */}
+                    <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange}/>
                     <button>입력</button>
                     <div>{this.state.result}</div>
                 </form>
